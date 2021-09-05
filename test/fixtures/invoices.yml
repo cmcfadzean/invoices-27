@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  number: MyString
+  date: 2021-09-05
+  due: 2021-09-05
+  notes: MyText
+  user: one
+  client: one
+
+two:
+  title: MyString
+  number: MyString
+  date: 2021-09-05
+  due: 2021-09-05
+  notes: MyText
+  user: two
+  client: two
