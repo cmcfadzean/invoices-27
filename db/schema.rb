@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_05_162401) do
+ActiveRecord::Schema.define(version: 2021_09_05_183043) do
 
   create_table "clients", force: :cascade do |t|
     t.string "name"
@@ -42,6 +42,17 @@ ActiveRecord::Schema.define(version: 2021_09_05_162401) do
     t.index ["user_id"], name: "index_invoices_on_user_id"
   end
 
+  create_table "items", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.string "price"
+    t.string "qty"
+    t.integer "invoice_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["invoice_id"], name: "index_items_on_invoice_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -57,4 +68,5 @@ ActiveRecord::Schema.define(version: 2021_09_05_162401) do
   add_foreign_key "clients", "users"
   add_foreign_key "invoices", "clients"
   add_foreign_key "invoices", "users"
+  add_foreign_key "items", "invoices"
 end
