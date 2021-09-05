@@ -5,6 +5,7 @@ class InvoicesController < ApplicationController
   # GET /invoices or /invoices.json
   def index
     @invoices = current_user.invoices
+    @clients = current_user.clients
   end
 
   # GET /invoices/1 or /invoices/1.json

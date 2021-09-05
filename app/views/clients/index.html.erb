@@ -12,7 +12,6 @@
       <th>Zip</th>
       <th>Country</th>
       <th>Status</th>
-      <th>User</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -29,7 +28,6 @@
         <td><%= client.zip %></td>
         <td><%= client.country %></td>
         <td><%= client.status %></td>
-        <td><%= client.user_id %></td>
         <td><%= link_to 'Show', client %></td>
         <td><%= link_to 'Edit', edit_client_path(client) %></td>
         <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
