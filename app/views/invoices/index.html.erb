@@ -1,6 +1,32 @@
-<h1>Invoices</h1>
-
-<table>
+<%= render(SubbarComponent.new(heading: "Invoices (#{ @invoiceCount })")) do |c| %>
+  <% c.action() do %>
+    <%= link_to new_invoice_path, class: "btn btn-success" do %>
+      <%= fa_icon "plus" %>
+      New Invoice
+    <% end %>
+  <% end %>
+  <% @invoices.each do |invoice| %>
+    <%= render(ItemComponent.new(title: invoice.title, url: invoice)) do |c| %>
+      <% c.sub() do %>
+        <%= @clients.find(invoice.client_id).name %><br>
+        <div class="d-flex">
+          <div class="flex-grow-1">
+            $TBD
+          </div>
+          <div class="">
+            <%= invoice.date %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
+<%= render(StageComponent.new()) do %>
+  <%= render(NullComponent.new(title: "No Invoice Selected")) do %>
+    <%= render(IconComponent.new(name: "file-text-o")) %>
+  <% end %>
+<% end %>
+<!--<table>
   <thead>
     <tr>
       <th>Title</th>
@@ -28,8 +54,4 @@
       </tr>
     <% end %> 
   </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Invoice', new_invoice_path %>
+</table>-->

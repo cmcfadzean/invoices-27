@@ -4,10 +4,22 @@
       <%= fa_icon "plus" %>
       Add Client
     <% end %>
-  <% end %> 
+  <% end %>
+  <% @clients.each do |client| %>
+    <%= render(ItemComponent.new(title: client.name, url: client)) do |c| %>
+      <%= render(IconComponent.new(name: "building-o")) %>
+      <% c.sub() do %>
+        $TBD Due<br>
+        TBD Active Invoices
+      <% end %>
+    <% end %>
+  <% end %>
 <% end %>
 <%= render(StageComponent.new()) do %>
-<table class="table">
+  <%= render(NullComponent.new(title: "No Client Selected")) do %>
+    <%= render(IconComponent.new(name: "building-o")) %>
+  <% end %>
+<!--<table class="table">
   <thead>
     <tr>
       <th>Name</th>
@@ -41,5 +53,5 @@
       </tr>
     <% end %>
   </tbody>
-</table>
+</table>-->
 <% end %>

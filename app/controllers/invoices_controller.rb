@@ -5,6 +5,7 @@ class InvoicesController < ApplicationController
   # GET /invoices or /invoices.json
   def index
     @invoices = current_user.invoices
+    @invoiceCount = current_user.invoices.size
     @clients = current_user.clients
   end
 
