@@ -29,7 +29,8 @@ th {
 a {
   font-weight: 600;
   color: system-color(gray,900);
+  text-decoration: none;
   &:hover {
-    color: system-color(red, 700);
+    color: system-color(green, 700);
   }
 }

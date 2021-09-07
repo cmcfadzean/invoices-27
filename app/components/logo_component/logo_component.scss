@@ -1,0 +1,11 @@
+.system-logo {
+  display: flex;
+  align-items: center;
+  font-size: system-font-size(xl) !important;
+  font-weight: 900;
+  img {
+    margin-right: system-spacing(sm);
+    width: 40px;
+    height: 25px;
+  }
+}

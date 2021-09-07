@@ -1,0 +1,18 @@
+.system-subbar {
+  padding: system-spacing();
+  border-right: system-border();
+  width: 300px;
+  &__action {
+    margin-bottom: system-spacing(sm);
+    .btn {
+      font-size: system-font-size(sm);
+      font-weight: 500;
+    }
+    i {
+      margin-right: system-spacing(xs);
+    }
+  }
+  &__heading {
+    font-size: system-font-size(xs);
+  }
+}

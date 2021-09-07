@@ -11,15 +11,28 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
-      <%= link_to current_user.email, edit_user_registration_path, :class => '#' %>
-      <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => '#'  %>
-    <% else %>
-      <%= link_to "Sign up", new_user_registration_path, :class => '#'  %>
-      <%= link_to "Login", new_user_session_path, :class => '#'  %>
+    <%= render(SidebarComponent.new()) do |c| %>
+      <% c.body() do %>
+        <%= link_to clients_path do %>
+          <%= fa_icon "building-o" %>
+          Clients
+        <% end %>
+        <%= link_to invoices_path do %>
+          <%= fa_icon "file-text-o" %>
+          Invoices
+        <% end %>
+      <% end %>
+      <% c.bottom() do %>
+        <%= link_to edit_user_registration_path, :class => '#' do %>
+          <%= fa_icon "smile-o" %>
+          Account
+        <% end %>
+        <%= link_to destroy_user_session_path, method: :delete, :class => '#' do %>
+          <%= fa_icon "hand-peace-o" %>
+          Logout
+        <% end %>
+      <% end %>
     <% end %>
-    <%= link_to 'Clients', clients_path %>
-    <%= link_to 'Invoices', invoices_path %>
     <%= yield %>
     <%= render(AlertComponent.new(id: "notice", message: notice)) %>
     <%= render(AlertComponent.new(id: "alert", message: alert)) %>

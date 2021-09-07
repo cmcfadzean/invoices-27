@@ -5,6 +5,7 @@ class ClientsController < ApplicationController
   # GET /clients or /clients.json
   def index
     @clients = current_user.clients
+    @clientCount = current_user.clients.size
   end
 
   # GET /clients/1 or /clients/1.json

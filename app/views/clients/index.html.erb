@@ -1,6 +1,13 @@
-<h1>Clients</h1>
-
-<table>
+<%= render(SubbarComponent.new(heading: "Clients (#{ @clientCount })")) do |c| %>
+  <% c.action() do %>
+    <%= link_to new_client_path, class: "btn btn-success" do %>
+      <%= fa_icon "plus" %>
+      Add Client
+    <% end %>
+  <% end %> 
+<% end %>
+<%= render(StageComponent.new()) do %>
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
@@ -35,7 +42,4 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Client', new_client_path %>
+<% end %>

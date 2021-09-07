@@ -2,6 +2,8 @@
 /* Vendor Styles */
 /***********************************************/
 @import "system/vendor/reboot";
+@import "font-awesome";
+@import "bootstrap";
 
 /***********************************************/
 /* Design Tokens */
@@ -14,6 +16,7 @@
 /***********************************************/
 /* Core Styles */
 /***********************************************/
+@import "system/core/layout";
 @import "system/core/mixins";
 @import "system/core/typography";
 
