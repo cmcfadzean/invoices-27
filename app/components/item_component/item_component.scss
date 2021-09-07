@@ -1,0 +1,20 @@
+.system-item {
+  margin: system-spacing(sm) 0;
+  padding-bottom: system-spacing(sm);
+  font-size: system-font-size(sm);
+  display: flex;
+  align-items: center;
+  border-bottom: system-border();
+  &__info {
+    flex: 1;
+  }
+  &__title {
+  }
+  &__sub {
+    font-size: system-font-size(xs);
+    font-weight: 400;
+  }
+  i {
+    margin-right: system-spacing(sm);
+  }
+}

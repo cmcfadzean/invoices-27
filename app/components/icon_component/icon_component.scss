@@ -1,0 +1,9 @@
+.system-icon {
+  width: 50px;
+  text-align: center;
+  color: system-color(gray, 100);
+  font-size: system-font-size(3xl);
+  border: 2px solid system-color(gray, 100);
+  padding: system-spacing(xs);
+  border-radius: system-border(radius);
+}
