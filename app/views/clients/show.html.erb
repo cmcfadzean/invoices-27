@@ -1,52 +1,43 @@
-<p>
-  <strong>Name:</strong>
-  <%= @client.name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @client.email %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @client.phone %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @client.address %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @client.city %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @client.state %>
-</p>
-
-<p>
-  <strong>Zip:</strong>
-  <%= @client.zip %>
-</p>
-
-<p>
-  <strong>Country:</strong>
-  <%= @client.country %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @client.status %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @client.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back', clients_path %>
+<%= render(SubbarComponent.new(heading: "Clients (#{ @clientCount })")) do |c| %>
+  <% c.action() do %>
+    <%= link_to new_client_path, class: "btn btn-success" do %>
+      <%= fa_icon "plus" %>
+      Add Client
+    <% end %>
+  <% end %>
+  <% @clients.each do |client| %>
+    <%= render(ItemComponent.new(title: client.name, url: client)) do |c| %>
+      <%= render(IconComponent.new(name: "building-o")) %>
+      <% c.sub() do %>
+        $TBD Due<br>
+        TBD Active Invoices
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
+<%= render(StageComponent.new()) do %>
+  <%= render(ContainerComponent.new()) do %>
+    <%= render(HeadingComponent.new(title: @client.name)) do %>
+      <%= render(IconComponent.new(name: "building-o")) %>
+    <% end %>
+    <%= render(TabsComponent.new()) do %>
+      <ul class="nav nav-tabs" id="clientTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="detailsTab" data-bs-toggle="tab" data-bs-target="#details" type="button" role="tab" aria-controls="details" aria-selected="false">Details</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="invoicesTab" data-bs-toggle="tab" data-bs-target="#invoices" type="button" role="tab" aria-controls="invoices" aria-selected="false">Invoices</button>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="detailsTab">
+          <%= render(FormComponent.new()) do %>
+            <%= render 'form', client: @client %>
+          <% end %>
+        </div>
+        <div class="tab-pane fade" id="invoices" role="tabpanel" aria-labelledby="invoicesTab">TBD</div>
+      </div>
+    <% end %>
+    <%= link_to 'Delete', @client, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger" %>
+  <% end %>
+<% end %>

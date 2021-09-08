@@ -1,8 +1,5 @@
 .system-stage {
   padding: system-spacing(lg);
   flex: 1;
-  &__container {
-    max-width: 800px;
-    margin: 0 auto;
-  }
+  overflow: scroll;
 }

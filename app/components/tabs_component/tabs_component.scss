@@ -1,0 +1,15 @@
+.system-tabs {
+  margin-bottom: system-spacing();
+  .nav-tabs {
+    margin-bottom: system-spacing();
+  }
+  .nav-link {
+    border: none;
+    color: system-color(gray, 900);
+    border-bottom: 4px solid transparent;
+    &.active {
+      color: system-color(teal);
+      border-bottom: 4px solid system-color(teal);
+    }
+  }
+}

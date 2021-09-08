@@ -10,11 +10,14 @@ class ClientsController < ApplicationController
 
   # GET /clients/1 or /clients/1.json
   def show
+    @clients = current_user.clients
+    @clientCount = current_user.clients.size
   end
 
   # GET /clients/new
   def new
     @clients = current_user.clients
+    @clientCount = current_user.clients.size
     @client = current_user.clients.build
   end
 

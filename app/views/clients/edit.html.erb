@@ -1,8 +1,10 @@
 <%= render(StageComponent.new()) do %>
-  <%= render(FormComponent.new()) do %>
-    <%= render(HeadingComponent.new(title: "Edit Client")) do %>
-      <%= render(IconComponent.new(name: "building-o")) %>
+  <%= render(ContainerComponent.new()) do %>
+    <%= render(FormComponent.new()) do %>
+      <%= render(HeadingComponent.new(title: "Edit Client")) do %>
+        <%= render(IconComponent.new(name: "building-o")) %>
+      <% end %>
+      <%= render 'form', client: @client %>
     <% end %>
-    <%= render 'form', client: @client %>
   <% end %>
 <% end %>
