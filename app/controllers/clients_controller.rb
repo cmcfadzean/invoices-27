@@ -14,6 +14,7 @@ class ClientsController < ApplicationController
 
   # GET /clients/new
   def new
+    @clients = current_user.clients
     @client = current_user.clients.build
   end
 
