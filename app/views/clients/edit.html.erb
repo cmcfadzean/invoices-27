@@ -1,6 +1,8 @@
-<h1>Editing Client</h1>
-
-<%= render 'form', client: @client %>
-
-<%= link_to 'Show', @client %> |
-<%= link_to 'Back', clients_path %>
+<%= render(StageComponent.new()) do %>
+  <%= render(FormComponent.new()) do %>
+    <%= render(HeadingComponent.new(title: "Edit Client")) do %>
+      <%= render(IconComponent.new(name: "building-o")) %>
+    <% end %>
+    <%= render 'form', client: @client %>
+  <% end %>
+<% end %>

@@ -1,5 +1,8 @@
-<h1>New Client</h1>
-
-<%= render 'form', client: @client %>
-
-<%= link_to 'Back', clients_path %>
+<%= render(StageComponent.new()) do %>
+  <%= render(FormComponent.new()) do %>
+    <%= render(HeadingComponent.new(title: "New Client")) do %>
+      <%= render(IconComponent.new(name: "building-o")) %>
+    <% end %>
+    <%= render 'form', client: @client %>
+  <% end %>
+<% end %>

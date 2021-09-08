@@ -1,0 +1,24 @@
+.system-form {
+  .form-heading {
+    margin-top: system-spacing();
+  }
+  .form-field {
+    margin-bottom: system-spacing(sm);
+  }
+  .form-label {
+    font-size: system-font-size(sm);
+    margin-bottom: system-spacing(xs);
+  }
+  .form-control {
+    padding: system-spacing(xs);
+    border-radius: system-border(radius);
+  }
+  .form-actions {
+    margin: system-spacing(xl) 0;
+    .btn {
+      padding: system-spacing(sm) system-spacing();
+      font-size: system-font-size(sm);
+      border-radius: system-border(radius);
+    }
+  }
+}
