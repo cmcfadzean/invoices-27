@@ -7,17 +7,27 @@
     <th>Qty</th>
     <th>Price</th>
   </tr>
-  <% if @invoice.items.count != 0 %>
-    <%= render @invoice.items.order(created_at: :desc) %>
-  <% end %>
   <%= form_for([@invoice, @invoice.items.build]) do |form| %>
     <tr>
-      <td><%= form.submit 'Add', :class => 'btn btn-success' %></td>
+      <td><%= form.submit 'Add', :class => 'btn btn-light' %></td>
       <td><%= form.text_field :title, class: "form-control" %></td>
       <td><%= form.text_field :description, class: "form-control" %></td>
-      <td><%= form.text_field :price, class: "form-control" %></td>
+      <td>
+        <div class="input-group">
+          <span class="input-group-text">$</span>
+          <%= form.text_field :price, class: "form-control" %>
+        </div>
+      </td>
       <td><%= form.text_field :qty, class: "form-control" %></td>
-      <td>TBD</td>
+      <td>
+        <div class="input-group">
+          <span class="input-group-text">$</span>
+          <input type="text" class="form-control" disabled>
+        </div>
+      </td>
     </tr>
+  <% end %>
+  <% if @invoice.items.count != 0 %>
+    <%= render @invoice.items.order(created_at: :desc) %>
   <% end %>
 </table>

@@ -23,8 +23,15 @@
 <% end %>
 <%= render(StageComponent.new()) do %>
   <%= render(ContainerComponent.new()) do %>
-    <%= render(HeadingComponent.new(title: @invoice.number)) do %>
-      <%= render(IconComponent.new(name: "file-text-o")) %>
+    <%= render(DataComponent.new()) do |c| %>
+      <% c.left() do %>
+        <%= render(HeadingComponent.new(title: @invoice.number)) do %>
+          <%= render(IconComponent.new(name: "file-text-o")) %>
+        <% end %>
+      <% end %>
+      <% c.right() do %>
+        <button type="submit" form="invoice-form" class="btn btn-success">Save</button>
+      <% end %>
     <% end %>
     <%= render(InvoiceComponent.new()) do %>
       <div class="row system-invoice__row">
@@ -32,7 +39,7 @@
           Branding TBD
         </div>
         <div class="col">
-          <h5 class="system-invoice__heading">Provider</h5>
+          <%= render(InvoiceHeadingComponent.new(title: "Provider")) %>
           <%= @current_user.email %>
         </div>
       </div>

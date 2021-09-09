@@ -1,36 +1,27 @@
-<%= form_with(model: invoice) do |form| %>
+
+<%= form_with(model: invoice, id: "invoice-form") do |form| %>
   <div class="row system-invoice__row">
     <div class="col">
-      <h5 class="system-invoice__heading">Customer</h5>
+      <%= render(InvoiceHeadingComponent.new(title: "Customer")) %>
       <%= form.collection_select :client_id, Client.order(:name), :id, :name, {:include_blank => 'Client...'} %>
     </div>
     <div class="col">
-      <h5 class="system-invoice__heading">
-        <div class="d-flex">
-          <div class="">
-            Invoice No.
-          </div>
-          <div class="flex-grow-1 ms-3 text-end">
-            <%= @invoice.number %>
-          </div>
-        </div>
-      </h5>
-      <div class="d-flex">
-        <div class="">
-          Date:
-        </div>
-        <div class="flex-grow-1 ms-3 text-end">
-          <%= form.date_select :date %>
-        </div>
-      </div>
-      <div class="d-flex">
-        <div class="">
-          Due:
-        </div>
-        <div class="flex-grow-1 ms-3 text-end">
-          <%= form.date_select :due %>
-        </div>
-      </div>
+      <%= render(InvoiceHeadingComponent.new(title: "")) do %>
+        <%= render(DataComponent.new()) do |c| %>
+          <% c.left() do %>Invoice No.<% end %>
+          <% c.right() do %><%= @invoice.number %><% end %>
+        <% end %>
+      <% end %>
+      <%= render(DataComponent.new()) do |c| %>
+        <% c.left() do %>Date:<% end %>
+        <% c.right() do %><%= form.date_select :date %><% end %>
+      <% end %>
+      <%= render(DataComponent.new()) do |c| %>
+        <% c.left() do %>Due:<% end %>
+        <% c.right() do %><%= form.date_select :due %><% end %>
+      <% end %>
+      <%= render(InvoiceHeadingComponent.new(title: "Invoice Notes")) %>
+      <%= form.text_area :notes, class: "form-control" %>
     </div>
   </div>
   <div class="row system-invoice__row">
@@ -38,21 +29,10 @@
       <%= form.text_field :title, class: "form-control form-control-lg text-center" %>
     </div>
   </div>
-
-  <div class="row system-invoice__row">
-    <div class="col">
-      <%= render "items/form" %>
-    </div>
-  </div>
-
-  <div class="row system-invoice__row">
-    <div class="col">
-      <%= form.label "Invoice Notes" %>
-      <%= form.text_area :notes, class: "form-control" %>
-    </div>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
+
+<div class="row system-invoice__row">
+  <div class="col">
+    <%= render "items/form" %>
+  </div>
+</div>

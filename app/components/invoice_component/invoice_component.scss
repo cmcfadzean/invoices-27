@@ -13,6 +13,7 @@
   select {
     display: inline-block;
     padding: .375rem 2.25rem .375rem .75rem;
+    margin-bottom: system-spacing(sm);
     -moz-padding-start: calc(0.75rem - 3px);
     font-size: 1rem;
     font-weight: 400;
@@ -22,12 +23,15 @@
     background-repeat: no-repeat;
     background-position: right .75rem center;
     background-size: 16px 12px;
-    border: 1px solid #ced4da;
+    border: 1px dashed #ced4da;
     border-radius: .25rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+  }
+  .form-control {
+    border: 1px dashed #ced4da;
   }
   .form-control-lg {
     font-size: system-font-size(3xl);
