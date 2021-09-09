@@ -1,25 +1,23 @@
-<%= form_for([@invoice, @invoice.items.build]) do |form| %>
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price %>
-  </div>
-
-  <div class="field">
-    <%= form.label :qty %>
-    <%= form.text_field :qty %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+<table>
+  <tr>
+    <th></th>
+    <th>Item</th>
+    <th>Description</th>
+    <th>Price/Unit</th>
+    <th>Qty</th>
+    <th>Price</th>
+  </tr>
+  <% if @invoice.items.count != 0 %>
+    <%= render @invoice.items.order(created_at: :desc) %>
+  <% end %>
+  <%= form_for([@invoice, @invoice.items.build]) do |form| %>
+    <tr>
+      <td><%= form.submit 'Add', :class => 'btn btn-success' %></td>
+      <td><%= form.text_field :title, class: "form-control" %></td>
+      <td><%= form.text_field :description, class: "form-control" %></td>
+      <td><%= form.text_field :price, class: "form-control" %></td>
+      <td><%= form.text_field :qty, class: "form-control" %></td>
+      <td>TBD</td>
+    </tr>
+  <% end %>
+</table>

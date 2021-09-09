@@ -1,17 +1,104 @@
-
-<p>
+<%= render(SubbarComponent.new(heading: "Invoices (#{ @invoiceCount })")) do |c| %>
+  <% c.action() do %>
+    <%= link_to new_invoice_path, class: "btn btn-success" do %>
+      <%= fa_icon "plus" %>
+      New Invoice
+    <% end %>
+  <% end %>
+  <% @invoices.each do |invoice| %>
+    <%= render(ItemComponent.new(title: invoice.number, url: invoice)) do |c| %>
+      <% c.sub() do %>
+        <%= @clients.find(invoice.client_id).name %><br>
+        <div class="d-flex">
+          <div class="flex-grow-1">
+            $TBD
+          </div>
+          <div class="">
+            <%= invoice.date %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
+<%= render(StageComponent.new()) do %>
+  <%= render(ContainerComponent.new()) do %>
+    <%= render(HeadingComponent.new(title: @invoice.number)) do %>
+      <%= render(IconComponent.new(name: "file-text-o")) %>
+    <% end %>
+    <%= render(InvoiceComponent.new()) do %>
+      <div class="row system-invoice__row">
+        <div class="col">
+          Branding TBD
+        </div>
+        <div class="col">
+          <h5 class="system-invoice__heading">Provider</h5>
+          <%= @current_user.email %>
+        </div>
+      </div>
+      <div class="row system-invoice__row">
+        <div class="col">
+          <h5 class="system-invoice__heading">Customer</h5>
+          <%= @clients.find(@invoice.client_id).name %>
+        </div>
+        <div class="col">
+          <h5 class="system-invoice__heading">
+            <div class="d-flex">
+              <div class="">
+                Invoice No.
+              </div>
+              <div class="flex-grow-1 ms-3 text-end">
+                <%= @invoice.number %>
+              </div>
+            </div>
+          </h5>
+          <div class="d-flex">
+            <div class="">
+              Date:
+            </div>
+            <div class="flex-grow-1 ms-3 text-end">
+              <%= @invoice.date %>
+            </div>
+          </div>
+          <div class="d-flex">
+            <div class="">
+              Due:
+            </div>
+            <div class="flex-grow-1 ms-3 text-end">
+              <%= @invoice.due %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row text-center">
+        <h2><%= @invoice.title %></h2>
+      </div>
+      <div class="row">
+        <div class="col-1"></div>
+        <div class="col-3">Item</div>
+        <div class="col-3">Description</div>
+        <div class="col-2">Price/Unit</div>
+        <div class="col-1">Qty</div>
+        <div class="col-2">Price</div>
+      </div>
+      <% if @invoice.items.count != 0 %>
+        <%= render @invoice.items.order(created_at: :desc) %>
+      <% else %>
+        Nada
+      <% end %>
+      <%= render "items/form" %>
+      <div class="row">
+        <strong>Notes:</strong><br>
+        <%= @invoice.notes %>
+      </div>
+      <%= link_to 'Edit', edit_invoice_path(@invoice) %> |
+      <%= link_to 'Back', invoices_path %>
+    <% end %>
+  <% end %>
+<% end %>
+<!--<p>
   <strong>Title:</strong>
   <%= @invoice.title %>
-</p>
-
-<p>
-  <strong>Number:</strong>
-  <%= @invoice.number %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= @invoice.date %>
 </p>
 
 <p>
@@ -38,9 +125,4 @@
   <%= render @invoice.items.order(created_at: :desc) %>
 <% else %>
   Nada
-<% end %>
-
-<%= render "items/form" %>
-
-<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
-<%= link_to 'Back', invoices_path %>
+<% end %>-->

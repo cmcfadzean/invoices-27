@@ -28,6 +28,12 @@
         <li class="nav-item" role="presentation">
           <button class="nav-link" id="invoicesTab" data-bs-toggle="tab" data-bs-target="#invoices" type="button" role="tab" aria-controls="invoices" aria-selected="false">Invoices</button>
         </li>
+        <li class="nav-item dropdown">
+          <button class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Actions</button>
+          <ul class="dropdown-menu">
+            <li><%= link_to 'Delete', @client, method: :delete, data: { confirm: 'Are you sure?' }, class: "dropdown-item" %></li>
+          </ul>
+        </li>
       </ul>
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="detailsTab">
@@ -38,6 +44,5 @@
         <div class="tab-pane fade" id="invoices" role="tabpanel" aria-labelledby="invoicesTab">TBD</div>
       </div>
     <% end %>
-    <%= link_to 'Delete', @client, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger" %>
   <% end %>
 <% end %>

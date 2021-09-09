@@ -1,0 +1,35 @@
+.system-invoice {
+  margin-top: system-spacing();
+  border: system-border();
+  padding: system-spacing(2xl);
+  &__row {
+    margin-bottom: system-spacing(2xl);
+  }
+  &__heading {
+    border-bottom: system-border();
+    padding-bottom: system-spacing(xs);
+    margin-bottom: system-spacing(xs);
+  }
+  select {
+    display: inline-block;
+    padding: .375rem 2.25rem .375rem .75rem;
+    -moz-padding-start: calc(0.75rem - 3px);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: right .75rem center;
+    background-size: 16px 12px;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+  .form-control-lg {
+    font-size: system-font-size(3xl);
+  }
+}

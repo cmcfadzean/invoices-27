@@ -1,44 +1,55 @@
 <%= form_with(model: invoice) do |form| %>
-  <% if invoice.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(invoice.errors.count, "error") %> prohibited this invoice from being saved:</h2>
-
-      <ul>
-        <% invoice.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+  <div class="row system-invoice__row">
+    <div class="col">
+      <h5 class="system-invoice__heading">Customer</h5>
+      <%= form.collection_select :client_id, Client.order(:name), :id, :name, {:include_blank => 'Client...'} %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :client_id %>
-    <%= form.collection_select :client_id, Client.order(:name),:id,:name, include_blank: true %>
+    <div class="col">
+      <h5 class="system-invoice__heading">
+        <div class="d-flex">
+          <div class="">
+            Invoice No.
+          </div>
+          <div class="flex-grow-1 ms-3 text-end">
+            <%= @invoice.number %>
+          </div>
+        </div>
+      </h5>
+      <div class="d-flex">
+        <div class="">
+          Date:
+        </div>
+        <div class="flex-grow-1 ms-3 text-end">
+          <%= form.date_select :date %>
+        </div>
+      </div>
+      <div class="d-flex">
+        <div class="">
+          Due:
+        </div>
+        <div class="flex-grow-1 ms-3 text-end">
+          <%= form.date_select :due %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row system-invoice__row">
+    <div class="col">
+      <%= form.text_field :title, class: "form-control form-control-lg text-center" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="row system-invoice__row">
+    <div class="col">
+      <%= render "items/form" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :number %>
-    <%= form.text_field :number %>
-  </div>
-
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.date_select :date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :due %>
-    <%= form.date_select :due %>
-  </div>
-
-  <div class="field">
-    <%= form.label :notes %>
-    <%= form.text_area :notes %>
+  <div class="row system-invoice__row">
+    <div class="col">
+      <%= form.label "Invoice Notes" %>
+      <%= form.text_area :notes, class: "form-control" %>
+    </div>
   </div>
 
   <div class="actions">

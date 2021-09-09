@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2021_09_05_183043) do
   end
 
   create_table "invoices", force: :cascade do |t|
-    t.string "title"
+    t.string "title", default: "Invoice"
     t.string "number"
     t.date "date"
     t.date "due"

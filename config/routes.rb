@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   resources :invoices do
+    member do
+      get :preview
+    end 
     resources :items
   end
   resources :clients

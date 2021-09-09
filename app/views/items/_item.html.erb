@@ -1,5 +1,8 @@
-<%= item.title %>
-<%= item.description %>
-<%= item.price %>
-<%= item.qty %>
-<%= link_to invoice_item_path(@invoice, item.id), method: :delete, data: { confirm: "Are you sure?" }, class: "vault-link__action" do %>Delete<% end %>
+<tr>
+  <td><%= link_to invoice_item_path(@invoice, item.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" do %>Delete<% end %></td>
+  <td><%= item.title %></td>
+  <td><%= item.description %></td>
+  <td><%= item.price %></td>
+  <td><%= item.qty %></td>
+  <td>TBD</td>
+</tr>
