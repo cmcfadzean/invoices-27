@@ -1,7 +1,20 @@
-<h1>New Invoice</h1>
-
-<%= render 'form', invoice: @invoice %>
-
-<%= link_to 'Back', invoices_path %>
-
-<%= @invoice.id %>
+<%= render(StageComponent.new()) do %>
+  <%= render(ContainerComponent.new()) do %>
+    <%= render(DataComponent.new()) do |c| %>
+      <% c.left() do %>
+        <%= render(HeadingComponent.new(title: "New Invoice")) do %>
+          <%= render(IconComponent.new(name: "file-text-o")) %>
+        <% end %>
+      <% end %>
+      <% c.right() do %>
+  
+      <% end %>
+    <% end %>
+    <%= render(InvoiceComponent.new()) do %>
+      <%= form_with(model: @invoice, id: "invoice-form") do |form| %>
+        <%= form.collection_select :client_id, Client.order(:name), :id, :name, {:include_blank => 'Client...'}, class: "form-select form-select-lg" %>
+        <button type="submit" form="invoice-form" class="btn btn-success">Save & Continue</button>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
