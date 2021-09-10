@@ -45,8 +45,8 @@ ActiveRecord::Schema.define(version: 2021_09_05_183043) do
   create_table "items", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.string "price"
-    t.string "qty"
+    t.string "price", default: "0.00"
+    t.string "qty", default: "1"
     t.integer "invoice_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

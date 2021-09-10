@@ -3,26 +3,30 @@
     <th></th>
     <th>Item</th>
     <th>Description</th>
-    <th>Price/Unit</th>
-    <th>Qty</th>
-    <th>Price</th>
+    <th class="text-end">Price/Unit</th>
+    <th class="text-end">Qty</th>
+    <th class="text-end">Price</th>
   </tr>
   <%= form_for([@invoice, @invoice.items.build]) do |form| %>
     <tr>
-      <td><%= form.submit 'Add', :class => 'btn btn-light' %></td>
+      <td>
+        <%= button_tag( :class => "btn btn-light") do %>
+          <%= fa_icon "plus" %>
+        <% end %>
+      </td>
       <td><%= form.text_field :title, class: "form-control" %></td>
       <td><%= form.text_field :description, class: "form-control" %></td>
-      <td>
+      <td> 
         <div class="input-group">
           <span class="input-group-text">$</span>
-          <%= form.text_field :price, class: "form-control" %>
+          <%= form.text_field :price, class: "form-control text-end" %>
         </div>
       </td>
-      <td><%= form.text_field :qty, class: "form-control" %></td>
+      <td><%= form.text_field :qty, class: "form-control text-end" %></td>
       <td>
         <div class="input-group">
           <span class="input-group-text">$</span>
-          <input type="text" class="form-control" disabled>
+          <input type="text" class="form-control text-end" disabled>
         </div>
       </td>
     </tr>
@@ -30,4 +34,12 @@
   <% if @invoice.items.count != 0 %>
     <%= render @invoice.items.order(created_at: :desc) %>
   <% end %>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><h3>Total:</h3></td>
+    <td class="text-end"><h3>$<%= @sum %></h3></td>
+  </tr>
 </table>

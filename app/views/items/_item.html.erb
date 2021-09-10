@@ -1,8 +1,18 @@
 <tr>
-  <td><%= link_to invoice_item_path(@invoice, item.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" do %>Delete<% end %></td>
-  <td><%= item.title %></td>
-  <td><%= item.description %></td>
-  <td><%= item.price %></td>
-  <td><%= item.qty %></td>
-  <td>TBD</td>
+  <td><%= link_to invoice_item_path(@invoice, item.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-light" do %><%= fa_icon "minus" %><% end %></td>
+  <td><input type="text" class="form-control" value="<%= item.title %>" disabled></td>
+  <td><input type="text" class="form-control" value="<%= item.description %>" disabled></td>
+  <td>
+    <div class="input-group">
+      <span class="input-group-text">$</span>
+      <input type="text" class="form-control text-end" value="<%= item.price %>" disabled>
+    </div>
+  </td>
+  <td><input type="text" class="form-control text-end" value="<%= item.qty %>" disabled></td>
+  <td>
+    <div class="input-group">
+      <span class="input-group-text">$</span>
+      <input type="text" class="form-control text-end" value="<%= item.price.to_f * item.qty.to_f %>" disabled>
+    </div>
+  </td>
 </tr>

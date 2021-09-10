@@ -44,11 +44,9 @@
         </div>
       </div>
       <%= render 'form', invoice: @invoice %>
-      <div class="row system-invoice__row">
-        <div class="col">
-          <%= render "items/form" %>
-        </div>
-      </div>
+      <%= render(InvoiceItemsComponent.new()) do %>
+        <%= render "items/form" %>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>

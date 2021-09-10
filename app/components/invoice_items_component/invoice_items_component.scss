@@ -1,0 +1,22 @@
+.system-invoice-items {
+  margin-top: system-spacing();
+  td, th {
+    padding: system-spacing(sm) system-spacing(xs);
+    font-size: system-font-size(md);
+  }
+  th {
+    background: system-color(gray, 100);
+    color: #000;
+    font-weight: 400;
+  }
+  td {
+    border-top: 1px solid system-color(gray, 100);
+  }
+  .form-control:disabled, .form-control[readonly] {
+    background: system-color(gray, 100);
+  }
+  .input-group-text {
+    background: system-color(gray, 100);
+    border: 1px dashed #ced4da;
+  }
+}

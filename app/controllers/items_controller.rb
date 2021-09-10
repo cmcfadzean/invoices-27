@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
 
 	def create
 		@item = @invoice.items.create(item_params)
-		redirect_to @invoice, notice: "Item created"
+		redirect_to edit_invoice_path(@invoice), notice: "Item created"
 	end
 
 	def destroy
@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
 		else
 			flash[:error] = "Item could not be deleted."
 		end
-		redirect_to @invoice
+		redirect_to edit_invoice_path(@invoice)
 	end
 
 	private

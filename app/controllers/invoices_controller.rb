@@ -29,6 +29,10 @@ class InvoicesController < ApplicationController
     @invoices = current_user.invoices
     @invoiceCount = current_user.invoices.size
     @clients = current_user.clients
+    @sum = 0
+    @invoice.items.each do |item|
+      @sum += item.price.to_f * item.qty.to_f
+    end
   end
 
   # GET /invoices/1/preview
