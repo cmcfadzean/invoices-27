@@ -1,10 +1,10 @@
 .system-item {
   margin: system-spacing(sm) 0;
-  padding-bottom: system-spacing(sm);
+  padding-top: system-spacing(sm);
+  border-top: system-border();
   font-size: system-font-size(sm);
   display: flex;
   align-items: center;
-  border-bottom: system-border();
   &__info {
     flex: 1;
   }

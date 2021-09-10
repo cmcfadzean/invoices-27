@@ -1,20 +1,4 @@
-<%= render(SubbarComponent.new(heading: "Clients (#{ @clientCount })")) do |c| %>
-  <% c.action() do %>
-    <%= link_to new_client_path, class: "btn btn-success" do %>
-      <%= fa_icon "plus" %>
-      Add Client
-    <% end %>
-  <% end %>
-  <% @clients.each do |client| %>
-    <%= render(ItemComponent.new(title: client.name, url: client)) do |c| %>
-      <%= render(IconComponent.new(name: "building-o")) %>
-      <% c.sub() do %>
-        $TBD Due<br>
-        TBD Active Invoices
-      <% end %>
-    <% end %>
-  <% end %>
-<% end %>
+<%= render 'subbar', clients: @clients %>
 <%= render(StageComponent.new()) do %>
   <%= render(NullComponent.new(title: "No Client Selected")) do %>
     <%= render(IconComponent.new(name: "building-o")) %>

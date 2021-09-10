@@ -1,0 +1,11 @@
+<%= render(SubbarComponent.new(heading: "Clients (#{ @clientCount })")) do |c| %>
+  <% clients.each do |client| %>
+    <%= render(ItemComponent.new(title: client.name, url: client)) do |c| %>
+      <%= render(IconComponent.new(name: "building-o")) %>
+      <% c.sub() do %>
+        $TBD Due<br>
+        TBD Active Invoices
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

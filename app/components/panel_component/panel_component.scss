@@ -1,0 +1,7 @@
+.system-panel {
+  margin-top: system-spacing();
+  background: #fff;
+  border: system-border();
+  border-radius: system-border(radius);
+  padding: system-spacing(2xl);
+}

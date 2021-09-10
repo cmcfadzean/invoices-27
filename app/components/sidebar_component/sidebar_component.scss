@@ -1,5 +1,5 @@
 .system-sidebar {
-  background-color: #f6f6f6;
+  background-color: #141923;
   border-right: system-border();
   width: 230px;
   padding: system-spacing();
@@ -11,20 +11,27 @@
   &__body {
     flex:1
   }
-  &__bottom {
-
-  }
-  a {
-    margin-bottom: system-spacing(sm);
-    font-size: system-font-size(md);
+  &__actions {
     display: flex; 
     align-items: center; 
-    i {
-      margin-right: system-spacing(sm);
-      font-size: system-font-size(2xl);
-    }
+    margin-bottom: system-spacing(sm);
     &:last-of-type {
       margin-bottom: 0;
     }
+  }
+  &__link {
+    color: #fff;
+    flex: 1;
+    display: flex; 
+    align-items: center; 
+    font-size: system-font-size(md);
+    i {
+      color: #636b79;
+      margin-right: system-spacing(sm);
+      font-size: system-font-size(2xl);
+    }
+  }
+  &__add {
+    color: #06e1cf;
   }
 }

@@ -1,7 +1,7 @@
 .system-subbar {
   padding: system-spacing();
-  border-right: system-border();
   width: 300px;
+  border-right: system-border();
   &__action {
     margin-bottom: system-spacing(sm);
     .btn {

@@ -1,0 +1,17 @@
+<%= render(SubbarComponent.new(heading: "Invoices (#{ @invoiceCount })")) do |c| %>
+  <% invoices.each do |invoice| %>
+    <%= render(ItemComponent.new(title: invoice.number, url: edit_invoice_path(invoice))) do |c| %>
+      <% c.sub() do %>
+        <%= @clients.find(invoice.client_id).name %><br>
+        <div class="d-flex">
+          <div class="flex-grow-1">
+            @sum
+          </div>
+          <div class="">
+            <%= invoice.date %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

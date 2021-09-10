@@ -1,26 +1,4 @@
-<%= render(SubbarComponent.new(heading: "Invoices (#{ @invoiceCount })")) do |c| %>
-  <% c.action() do %>
-    <%= link_to new_invoice_path, class: "btn btn-success" do %>
-      <%= fa_icon "plus" %>
-      New Invoice
-    <% end %>
-  <% end %>
-  <% @invoices.each do |invoice| %>
-    <%= render(ItemComponent.new(title: invoice.number, url: edit_invoice_path(invoice))) do |c| %>
-      <% c.sub() do %>
-        <%= @clients.find(invoice.client_id).name %><br>
-        <div class="d-flex">
-          <div class="flex-grow-1">
-            $TBD
-          </div>
-          <div class="">
-            <%= invoice.date %>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-  <% end %>
-<% end %>
+<%= render 'subbar', invoices: @invoices %>
 <%= render(StageComponent.new()) do %>
   <%= render(ContainerComponent.new()) do %>
     <%= render(DataComponent.new()) do |c| %>
@@ -33,19 +11,21 @@
         <button type="submit" form="invoice-form" class="btn btn-success btn-lg">Save</button>
       <% end %>
     <% end %>
-    <%= render(InvoiceComponent.new()) do %>
-      <div class="row system-invoice__row">
-        <div class="col">
-          Branding TBD
+    <%= render(PanelComponent.new()) do %>
+      <%= render(InvoiceComponent.new()) do %>
+        <div class="row system-invoice__row">
+          <div class="col">
+            Branding TBD
+          </div>
+          <div class="col">
+            <%= render(InvoiceHeadingComponent.new(title: "Provider")) %>
+            <%= @current_user.email %>
+          </div>
         </div>
-        <div class="col">
-          <%= render(InvoiceHeadingComponent.new(title: "Provider")) %>
-          <%= @current_user.email %>
-        </div>
-      </div>
-      <%= render 'form', invoice: @invoice %>
-      <%= render(InvoiceItemsComponent.new()) do %>
-        <%= render "items/form" %>
+        <%= render 'form', invoice: @invoice %>
+        <%= render(InvoiceItemsComponent.new()) do %>
+          <%= render "items/form" %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>

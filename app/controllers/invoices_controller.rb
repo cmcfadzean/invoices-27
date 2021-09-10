@@ -7,6 +7,7 @@ class InvoicesController < ApplicationController
     @invoices = current_user.invoices
     @invoiceCount = current_user.invoices.size
     @clients = current_user.clients
+    @sum = 0
   end
 
   # GET /invoices/1 or /invoices/1.json
