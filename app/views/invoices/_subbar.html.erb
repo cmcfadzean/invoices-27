@@ -5,7 +5,11 @@
         <%= @clients.find(invoice.client_id).name %><br>
         <div class="d-flex">
           <div class="flex-grow-1">
-            @sum
+            <% @sum = 0 %>
+            <% invoice.items.each do |item| %>
+              <% @sum += item.price.to_f * item.qty.to_f %>
+            <% end %>
+            $<%= @sum %>
           </div>
           <div class="">
             <%= invoice.date %>

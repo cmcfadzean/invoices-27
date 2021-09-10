@@ -3,8 +3,15 @@
     <%= render(ItemComponent.new(title: client.name, url: client)) do |c| %>
       <%= render(IconComponent.new(name: "building-o")) %>
       <% c.sub() do %>
-        $TBD Due<br>
-        TBD Active Invoices
+        <% @sum = 0 %>
+        <% client.invoices.each do |invoice| %>
+          <% invoice.items.each do |item| %>
+            <% @sum += item.price.to_f * item.qty.to_f %>
+          <% end %>
+        <% end %>
+        $<%= @sum %> Due<br>
+        <%= client.invoices.count %>
+        Active Invoices
       <% end %>
     <% end %>
   <% end %>
