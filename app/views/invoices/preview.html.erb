@@ -1,1 +1,45 @@
-<%= @invoice.title %>
+<%= render 'subbar', invoices: @invoices %>
+<%= render(StageComponent.new()) do %>
+  <%= render(ContainerComponent.new()) do %>
+    <%= render(UrlComponent.new(url: "#{invoice_url(@invoice)}-#{@invoice.number}")) %>
+    <%= render(PanelComponent.new()) do %>
+      <%= render(InvoiceComponent.new()) do %>
+        <div class="row system-invoice__row">
+          <div class="col">
+            Branding TBD
+          </div>
+          <div class="col">
+            <%= render(InvoiceHeadingComponent.new(title: "Provider")) %>
+            <%= @current_user.email %>
+          </div>
+        </div>
+        <div class="row system-invoice__row">
+          <div class="col">
+            <%= render(InvoiceHeadingComponent.new(title: "Customer")) %>
+          </div>
+          <div class="col">
+            <%= render(InvoiceHeadingComponent.new(title: "")) do %>
+              <%= render(DataComponent.new()) do |c| %>
+                <% c.left() do %>Invoice No.<% end %>
+                <% c.right() do %><%= @invoice.number %><% end %>
+              <% end %>
+            <% end %>
+            <%= render(DataComponent.new()) do |c| %>
+              <% c.left() do %>Date:<% end %>
+              <% c.right() do %><%= @invoice.date.strftime("%d/%m/%Y") %><% end %>
+            <% end %>
+            <%= render(DataComponent.new()) do |c| %>
+              <% c.left() do %>Due:<% end %>
+              <% c.right() do %><%= @invoice.due.strftime("%d/%m/%Y")%><% end %>
+            <% end %><br>
+            <%= render(InvoiceHeadingComponent.new(title: "Notes")) %>
+            <%= @invoice.notes %>
+          </div>
+        </div>
+        <%= render(InvoiceItemsComponent.new()) do %>
+          <%= render "items/show" %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

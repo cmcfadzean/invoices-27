@@ -1,0 +1,20 @@
+.system-url {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: system-border();
+  border-radius: system-border(radius);
+  padding: system-spacing(xs);
+  &__link {
+    flex: 1;
+  }
+  &__text {
+    background: system-color(gray, 200);
+    color: system-color(gray, 700);
+    font-size: system-font-size(xs);
+    padding: system-spacing(xs) system-spacing(sm);
+    border-radius: system-border(radius);
+    margin-right: system-spacing(xs);
+    font-weight: 700;
+  }
+}

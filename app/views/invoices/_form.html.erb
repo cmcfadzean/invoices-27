@@ -2,7 +2,7 @@
   <div class="row system-invoice__row">
     <div class="col">
       <%= render(InvoiceHeadingComponent.new(title: "Customer")) %>
-      <%= form.collection_select :client_id, Client.order(:name), :id, :name, {:include_blank => 'Client...'} %>
+      <%= form.collection_select :client_id, @clients.order(:name), :id, :name, {:include_blank => 'Client...'} %>
     </div>
     <div class="col">
       <%= render(InvoiceHeadingComponent.new(title: "")) do %>

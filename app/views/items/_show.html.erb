@@ -1,0 +1,25 @@
+<table class="table">
+  <tr>
+    <th>Item</th>
+    <th>Description</th>
+    <th class="text-end">Price/Unit</th>
+    <th class="text-end">Qty</th>
+    <th class="text-end">Price</th>
+  </tr>
+  <% @invoice.items.each do |item| %>
+    <tr>
+      <td><%= item.title %></td>
+      <td><%= item.description %></td>
+      <td class="text-end">$<%= item.price %></td>
+      <td class="text-end"><%= item.qty %></td>
+      <td class="text-end">$<%= item.price.to_f * item.qty.to_f %></td>
+    </tr>
+  <% end %>
+  <tr>
+    <td style="border-bottom: none;"></td>
+    <td style="border-bottom: none;"></td>
+    <td style="border-bottom: none;"></td>
+    <td style="border-bottom: none;"><h3>Total:</h3></td>
+    <td style="border-bottom: none;" class="text-end"><h3>$<%= @sum %></h3></td>
+  </tr>
+</table>

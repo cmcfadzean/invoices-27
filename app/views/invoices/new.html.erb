@@ -13,7 +13,7 @@
     <%= render(PanelComponent.new()) do %>
       <%= render(InvoiceComponent.new()) do %>
         <%= form_with(model: @invoice, id: "invoice-form") do |form| %>
-          <%= form.collection_select :client_id, Client.order(:name), :id, :name, {:include_blank => 'Client...'}, class: "form-select form-select-lg" %>
+          <%= form.collection_select :client_id, @clients.order(:name), :id, :name, {:include_blank => 'Client...'}, class: "form-select form-select-lg" %>
           <button type="submit" form="invoice-form" class="btn btn-success">Save & Continue</button>
         <% end %>
       <% end %>
