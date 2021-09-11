@@ -38,3 +38,7 @@ a {
   background: #038773;
   border: none;
 }
+.btn-lg {
+  font-size: system-font-size(sm);
+  padding: system-spacing(sm) system-spacing();
+}

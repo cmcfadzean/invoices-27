@@ -1,3 +1,4 @@
+<%= render 'sidebar' %>
 <%= render 'subbar', invoices: @invoices %>
 <%= render(StageComponent.new()) do %>
   <%= render(ContainerComponent.new()) do %>
@@ -16,6 +17,7 @@
         <div class="row system-invoice__row">
           <div class="col">
             <%= render(InvoiceHeadingComponent.new(title: "Customer")) %>
+            <%= @clients.find(@invoice.client_id).name %>
           </div>
           <div class="col">
             <%= render(InvoiceHeadingComponent.new(title: "")) do %>

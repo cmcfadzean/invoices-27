@@ -13,42 +13,6 @@
   </head>
 
   <body>
-    <%= render(SidebarComponent.new()) do |c| %>
-      <% c.body() do %>
-        <div class="system-sidebar__actions">
-          <%= link_to clients_path, class: "system-sidebar__link" do %>
-            <%= fa_icon "building-o" %>
-            Clients
-          <% end %>
-          <%= link_to new_client_path, class: "system-sidebar__add" do %>
-            <%= fa_icon "plus-circle" %>
-          <% end %>
-        </div>
-        <div class="system-sidebar__actions">
-          <%= link_to invoices_path, class: "system-sidebar__link" do %>
-            <%= fa_icon "file-text-o" %>
-            Invoices
-          <% end %>
-          <%= link_to new_invoice_path, class: "system-sidebar__add" do %>
-            <%= fa_icon "plus-circle" %>
-          <% end %>
-        </div>
-      <% end %>
-      <% c.bottom() do %>
-        <div class="system-sidebar__actions">
-          <%= link_to edit_user_registration_path, :class => 'system-sidebar__link' do %>
-            <%= fa_icon "smile-o" %>
-            Account
-          <% end %>
-        </div>
-        <div class="system-sidebar__actions">
-          <%= link_to destroy_user_session_path, method: :delete, :class => 'system-sidebar__link' do %>
-            <%= fa_icon "hand-peace-o" %>
-            Logout
-          <% end %>
-        </div>
-      <% end %>
-    <% end %>
     <%= yield %>
     <%= render(AlertComponent.new(id: "notice", message: notice)) %>
     <%= render(AlertComponent.new(id: "alert", message: alert)) %>

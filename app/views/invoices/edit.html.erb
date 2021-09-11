@@ -1,3 +1,4 @@
+<%= render 'sidebar' %>
 <%= render 'subbar', invoices: @invoices %>
 <%= render(StageComponent.new()) do %>
   <%= render(ContainerComponent.new()) do %>
@@ -8,6 +9,7 @@
         <% end %>
       <% end %>
       <% c.right() do %>
+        <%= link_to 'Preview & Send', preview_invoice_path(@invoice), class: "btn btn-light btn-lg" %>
         <button type="submit" form="invoice-form" class="btn btn-success btn-lg">Save</button>
       <% end %>
     <% end %>
@@ -28,6 +30,7 @@
         <% end %>
       <% end %>
     <% end %>
+    <%= link_to 'Delete', @invoice, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-lg" %>
   <% end %>
 <% end %>
 

@@ -1,3 +1,4 @@
+<%= render 'sidebar' %>
 <%= render(StageComponent.new()) do %>
   <%= render(ContainerComponent.new()) do %>
     <%= render(DataComponent.new()) do |c| %>
@@ -14,6 +15,8 @@
       <%= render(InvoiceComponent.new()) do %>
         <%= form_with(model: @invoice, id: "invoice-form") do |form| %>
           <%= form.collection_select :client_id, @clients.order(:name), :id, :name, {:include_blank => 'Client...'}, class: "form-select form-select-lg" %>
+          <%= form.hidden_field :date, value: Date.today %>
+          <%= form.hidden_field :due, value: Date.today %>
           <button type="submit" form="invoice-form" class="btn btn-success">Save & Continue</button>
         <% end %>
       <% end %>

@@ -1,5 +1,5 @@
 class InvoicesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show]
   before_action :set_invoice, only: %i[ preview show edit update destroy ]
 
   # GET /invoices or /invoices.json
@@ -12,9 +12,7 @@ class InvoicesController < ApplicationController
 
   # GET /invoices/1 or /invoices/1.json
   def show
-    @invoices = current_user.invoices
-    @invoiceCount = current_user.invoices.size
-    @clients = current_user.clients
+
   end
 
   # GET /invoices/new

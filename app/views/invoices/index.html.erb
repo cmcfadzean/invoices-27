@@ -1,3 +1,4 @@
+<%= render 'sidebar' %>
 <%= render 'subbar', invoices: @invoices %>
 <%= render(StageComponent.new()) do %>
   <%= render(NullComponent.new(title: "No Invoice Selected")) do %>
