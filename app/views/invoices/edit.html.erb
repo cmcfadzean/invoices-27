@@ -21,7 +21,8 @@
           </div>
           <div class="col">
             <%= render(InvoiceHeadingComponent.new(title: "Provider")) %>
-            <%= @current_user.email %>
+            <div class=""><%= @current_user.company %></div>
+            <div class=""><%= @current_user.email %></div>
           </div>
         </div>
         <%= render 'form', invoice: @invoice %>
