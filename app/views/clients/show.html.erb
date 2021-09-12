@@ -27,7 +27,30 @@
               <%= render 'form', client: @client %>
             <% end %>
           </div>
-          <div class="tab-pane fade" id="invoices" role="tabpanel" aria-labelledby="invoicesTab">TBD</div>
+          <div class="tab-pane fade" id="invoices" role="tabpanel" aria-labelledby="invoicesTab">
+            <table class="table">
+              <thead>
+                <th>Invoice #</th>
+                <th>Date</th>
+                <th>Due Date</th>
+                <th class="text-end">Amount Due</th>
+              </thead>
+              <tbody>
+                <% @client.invoices.each do |invoice| %>
+                  <% @sum = 0 %>
+                  <% invoice.items.each do |item| %>
+                    <% @sum += item.price.to_f * item.qty.to_f %>
+                  <% end %>
+                  <tr>
+                    <td><%= link_to invoice.number, invoice %></td>
+                    <td><%= invoice.date %></td>
+                    <td><%= invoice.due %></td>
+                    <td class="text-end">$<%= @sum %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
         </div>
       <% end %>
     <% end %>
