@@ -42,3 +42,8 @@ a {
   font-size: system-font-size(sm);
   padding: system-spacing(sm) system-spacing();
 }
+th {
+  font-size: system-font-size(sm);
+  color: system-color(gray, 800);
+  border-bottom: system-border();
+}
