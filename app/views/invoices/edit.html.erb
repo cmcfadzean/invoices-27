@@ -17,7 +17,7 @@
       <%= render(InvoiceComponent.new()) do %>
         <div class="row system-invoice__row">
           <div class="col">
-            Branding TBD
+            <%= render(BrandingComponent.new(logo: @current_user.logo )) %>
           </div>
           <div class="col">
             <%= render(InvoiceHeadingComponent.new(title: "Provider")) %>

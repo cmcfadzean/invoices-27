@@ -12,7 +12,10 @@ class InvoicesController < ApplicationController
 
   # GET /invoices/1 or /invoices/1.json
   def show
-
+    @sum = 0
+    @invoice.items.each do |item|
+      @sum += item.price.to_f * item.qty.to_f
+    end
   end
 
   # GET /invoices/new

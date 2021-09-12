@@ -4,7 +4,7 @@
       <%= render(InvoiceComponent.new()) do %>
         <div class="row system-invoice__row">
           <div class="col">
-            Branding TBD
+            <%= render(BrandingComponent.new(logo: User.find(@invoice.user_id).logo )) %>
           </div>
           <div class="col">
             <%= render(InvoiceHeadingComponent.new(title: "Provider")) %>
@@ -39,6 +39,7 @@
         <%= render(InvoiceItemsComponent.new()) do %>
           <%= render "items/show" %>
         <% end %>
+        <%= render(PoweredComponent.new()) %>
       <% end %>
     <% end %>
   <% end %>
