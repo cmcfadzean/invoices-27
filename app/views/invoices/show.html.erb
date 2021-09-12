@@ -39,7 +39,9 @@
         <%= render(InvoiceItemsComponent.new()) do %>
           <%= render "items/show" %>
         <% end %>
-        <%= render(PoweredComponent.new()) %>
+        <% if User.find(@invoice.user_id).powered? %>
+          <%= render(PoweredComponent.new()) %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>

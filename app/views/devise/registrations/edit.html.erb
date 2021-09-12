@@ -40,6 +40,10 @@
         <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
         <div class="form-text">(we need your current password to confirm your changes)</div>
       </div>
+      <div class="form-field">
+          <%= f.label :powered, class: "form-label" %>
+          <%= f.check_box :powered %>
+        </div>
       <div class="actions">
         <%= f.submit 'Save Settings', :class => 'btn btn-success btn-lg' %>
       </div>
