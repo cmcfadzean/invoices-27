@@ -5,7 +5,8 @@
   .form-field {
     margin-bottom: system-spacing(sm);
   }
-  .form-label {
+  .form-label, label {
+    display: block;
     font-size: system-font-size(sm);
     margin-bottom: system-spacing(xs);
   }
