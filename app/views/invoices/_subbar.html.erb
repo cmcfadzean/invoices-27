@@ -9,7 +9,7 @@
             <% invoice.items.each do |item| %>
               <% @sum += item.price.to_f * item.qty.to_f %>
             <% end %>
-            $<%= @sum %>
+            $<%= number_with_delimiter(@sum) %>
           </div>
           <div class="">
             <%= invoice.date %>

@@ -7,6 +7,9 @@
     <th class="text-end">Qty</th>
     <th class="text-end">Price</th>
   </tr>
+  <% if @invoice.items.count != 0 %>
+    <%= render @invoice.items.order(created_at: :asc) %>
+  <% end %>
   <%= form_for([@invoice, @invoice.items.build]) do |form| %>
     <tr>
       <td>
@@ -31,15 +34,12 @@
       </td>
     </tr>
   <% end %>
-  <% if @invoice.items.count != 0 %>
-    <%= render @invoice.items.order(created_at: :desc) %>
-  <% end %>
   <tr>
     <td></td>
     <td></td>
     <td></td>
     <td></td>
     <td><h3>Total:</h3></td>
-    <td class="text-end"><h3>$<%= @sum %></h3></td>
+    <td class="text-end"><h3>$<%= number_with_delimiter(@sum) %></h3></td>
   </tr>
 </table>

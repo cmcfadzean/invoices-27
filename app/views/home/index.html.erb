@@ -1,0 +1,18 @@
+<%= render(HomeComponent.new()) do %>
+  <div class="system-home__nav">
+    <%= render(DataComponent.new()) do |c| %>
+      <% c.left() do %><%= render(LogoComponent.new()) %><% end %>
+      <% c.right() do %>
+        <a class="btn" href="users/sign_in">Sign In</a>
+        <a class="btn btn-lg btn-success" href="users/sign_up">Sign Up</a>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="system-home__hero">
+    <%= render(ContainerComponent.new()) do %>
+      <h1>Build & send invoices for free!</h1>
+      <p>Creating and sending invoices should be simple. Spend time doing what you love and use an invoicing software that stays out of your way.</p>
+      <a class="btn btn-lg btn-success" href="users/sign_up">Sign Up For Free</a>
+    <% end %>
+  </div>
+<% end %>

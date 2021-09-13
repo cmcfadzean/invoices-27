@@ -1,0 +1,22 @@
+.system-home {
+  width: 100%;
+  &__nav {
+    background: #141923;
+    padding: system-spacing();
+    .btn {
+      color: #fff;;
+    }
+  }
+  &__hero {
+    padding: 150px 0;
+    text-align: center;
+    h1 {
+      font-size: 80px;
+      padding: 0 40px;
+    }
+    p {
+      font-size: 20px;
+      margin-bottom: system-spacing(lg);
+    }
+  }
+}

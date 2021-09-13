@@ -9,7 +9,7 @@
             <% @sum += item.price.to_f * item.qty.to_f %>
           <% end %>
         <% end %>
-        $<%= @sum %> Due<br>
+        $<%= number_with_delimiter(@sum) %> Due<br>
         <%= client.invoices.count %>
         Active Invoices
       <% end %>
